@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projects = [
   { label: "Master Shower Remodel", style: "Modern" },
@@ -45,39 +49,56 @@ function ProjectCard({ label, style, isBefore }: { label: string; style: string;
 }
 
 export default function BeforeAfterGallery() {
+  const { ref, visible } = useScrollAnimation();
+
   return (
-    <section id="projects" className="bg-[#f8f5f6] py-16">
+    <section id="projects" ref={ref} className="bg-[#f8f5f6] py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Before &amp; After Re-Bath Dallas, TX
+            Before &amp; After Padilla Prestige Remodeling, TX
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto">
             See the dramatic transformations our Dallas team delivers — real
             remodels from real local homeowners.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p) => (
-            <div key={p.label}>
+          {projects.map((p, i) => (
+            <motion.div
+              key={p.label}
+              initial={{ opacity: 0, y: 40 }}
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+            >
               <p className="text-sm font-semibold text-gray-700 mb-2">{p.label}</p>
               <div className="grid grid-cols-2 gap-1.5">
                 <ProjectCard label={p.label} style={p.style} isBefore={true} />
                 <ProjectCard label={p.label} style={p.style} isBefore={false} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="text-center mt-10"
+        >
           <Link
             href="/results/"
             className="inline-flex items-center gap-2 text-[#E07B00] font-semibold text-sm uppercase tracking-wide hover:gap-3 transition-all"
           >
             View Full Gallery <ArrowRight size={16} />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

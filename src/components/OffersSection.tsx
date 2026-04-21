@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Tag } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const offers = [
   {
@@ -29,26 +33,36 @@ const offers = [
 ];
 
 export default function OffersSection() {
+  const { ref, visible } = useScrollAnimation();
+
   return (
-    <section className="bg-[#f8f5f6] py-16">
+    <section ref={ref} className="bg-[#f8f5f6] py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center gap-3 mb-3">
-          <Tag size={20} className="text-[#E07B00]" />
-          <span className="text-[#E07B00] text-sm font-semibold uppercase tracking-widest">
-            Limited Time
-          </span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
-          Dallas, TX Bathroom Remodel Offers &amp; Discounts
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <Tag size={20} className="text-[#E07B00]" />
+            <span className="text-[#E07B00] text-sm font-semibold uppercase tracking-widest">
+              Limited Time
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+            Dallas, TX Bathroom Remodel Offers &amp; Discounts
+          </h2>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {offers.map((offer) => (
-            <div
+          {offers.map((offer, i) => (
+            <motion.div
               key={offer.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.13 }}
               className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
-              {/* Red accent top bar */}
               <div className="h-1.5 bg-[#E07B00]" />
               <div className="p-6">
                 <div className="text-3xl font-bold text-[#E07B00] mb-1">
@@ -67,7 +81,7 @@ export default function OffersSection() {
                   {offer.cta}
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         <p className="text-xs text-gray-400 mt-6">

@@ -22,10 +22,10 @@ export default function LocationSection() {
               <span className="text-sm font-semibold uppercase tracking-wide">Nationwide Coverage</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Find Your Local Re-Bath
+              Find Your Local Padilla Prestige Remodeling
             </h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              With hundreds of locations across the United States, a Re-Bath expert
+              With hundreds of locations across the United States, a Padilla Prestige Remodeling expert
               is likely right in your neighborhood. Enter your zip code to find the
               nearest showroom and schedule your free consultation.
             </p>
@@ -57,7 +57,7 @@ export default function LocationSection() {
           <div className="flex-1 flex justify-center">
             <Image
               src="/images/map.svg"
-              alt="Re-Bath locations across the United States"
+              alt="Padilla Prestige Remodeling locations across the United States"
               width={600}
               height={380}
               className="w-full max-w-lg"

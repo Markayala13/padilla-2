@@ -13,12 +13,13 @@ import AwardsSection from "@/components/AwardsSection";
 import FAQSection from "@/components/FAQSection";
 import LocationConsultationForm from "@/components/LocationConsultationForm";
 import BlogResourcesSection from "@/components/BlogResourcesSection";
+import TrustSection from "@/components/TrustSection";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "Bathroom Remodeling in Dallas, TX | Re-Bath®",
+  title: "Bathroom Remodeling in Dallas, TX | Padilla Prestige Remodeling",
   description:
-    "Re-Bath Dallas offers full bathroom remodels, accessible bathrooms, and tub & shower updates. Free in-home design consultations. Call +1 (214) 810-5012.",
+    "Padilla Prestige Remodeling offers full bathroom remodels, accessible bathrooms, and tub & shower updates. Free in-home design consultations. Call +1 (214) 810-5012.",
 };
 
 export default function Home() {
@@ -29,8 +30,9 @@ export default function Home() {
         <LocationHero />
         <LocationConsultationForm />
         <LocationInfo />
-        <FeaturesBar />
         <ServicesSection />
+        <FeaturesBar />
+        <TrustSection />
         <OffersSection />
         <FinancingSection />
         <JennyMarrsSection />

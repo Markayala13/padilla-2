@@ -47,7 +47,7 @@ export default function ConsultationCTA() {
               Start Your Bathroom Remodel Today
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-6">
-              Schedule a free in-home design consultation with your local Re-Bath
+              Schedule a free in-home design consultation with your local Padilla Prestige Remodeling
               expert. We&apos;ll measure your space, discuss your vision, and provide
               a no-obligation estimate.
             </p>
@@ -72,7 +72,7 @@ export default function ConsultationCTA() {
               Schedule Your Free Design Consultation
             </h3>
             <p className="text-sm text-gray-500 mb-5">
-              Fill out the form and a local Re-Bath expert will contact you within
+              Fill out the form and a local Padilla Prestige Remodeling expert will contact you within
               one business day.
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const reviews = [
   {
@@ -55,10 +59,17 @@ function StarRow({ count }: { count: number }) {
 }
 
 export default function AustinReviews() {
+  const { ref, visible } = useScrollAnimation();
+
   return (
-    <section id="reviews" className="bg-white py-16">
+    <section id="reviews" ref={ref} className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10"
+        >
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Dallas, TX Customer Reviews
@@ -72,12 +83,15 @@ export default function AustinReviews() {
               <span className="text-gray-600 text-sm">4.8 out of 5</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {reviews.map((r) => (
-            <div
+          {reviews.map((r, i) => (
+            <motion.div
               key={r.text.slice(0, 30)}
+              initial={{ opacity: 0, y: 40 }}
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
               className="border border-gray-100 p-5 hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-2 mb-1">
@@ -90,7 +104,7 @@ export default function AustinReviews() {
               <div className="flex items-center">
                 <span className="text-xs font-semibold text-gray-900">{r.author}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const faqs = [
   {
-    question: "What is the cost of a Re-Bath® bathroom remodel in Dallas, TX?",
+    question: "What is the cost of a Padilla Prestige Remodeling bathroom remodel in Dallas, TX?",
     answer:
       "Because all bathroom sizes and project scopes are unique, we offer a FREE in-home bathroom consultation. A design consultant will visit your home to understand your needs, style, and budget while taking measurements for accurate pricing. This ensures you get a custom quote tailored exactly to your project — no guessing, no surprises.",
   },
@@ -15,17 +17,17 @@ const faqs = [
       "Remodeling your bathroom increases your home's value while adding comfort, safety, and convenience to your daily life. Your bathroom should be a beautiful and inviting space, especially since it's one of the most visible areas for guests. Investing in a home renovation project takes careful planning and consideration — and our team is here to help every step of the way.",
   },
   {
-    question: "Does Re-Bath® offer a Design Service?",
+    question: "Does Padilla Prestige Remodeling offer a Design Service?",
     answer:
-      "Yes! At Re-Bath®, we believe good design is something everyone should enjoy. Our designers offer traditional, transitional, rustic, and contemporary aesthetics created by certified interior designers. Your free in-home design consultation includes personalized recommendations for your style, space, and budget.",
+      "Yes! At Padilla Prestige Remodeling, we believe good design is something everyone should enjoy. Our designers offer traditional, transitional, rustic, and contemporary aesthetics created by certified interior designers. Your free in-home design consultation includes personalized recommendations for your style, space, and budget.",
   },
   {
-    question: "How long does a Re-Bath® installation take?",
+    question: "How long does a Padilla Prestige Remodeling installation take?",
     answer:
-      "Project length depends on bathroom size, materials, job complexity, and any hidden issues discovered during installation. Most Re-Bath® projects are completed in just days, not weeks — with over 40 years in the industry, our highly qualified team is fully licensed and insured to complete custom bathroom renovations in just 3–5 days.",
+      "Project length depends on bathroom size, materials, job complexity, and any hidden issues discovered during installation. Most Padilla Prestige Remodeling projects are completed in just days, not weeks — with over 40 years in the industry, our highly qualified team is fully licensed and insured to complete custom bathroom renovations in just 3–5 days.",
   },
   {
-    question: "Does Re-Bath® offer a warranty?",
+    question: "Does Padilla Prestige Remodeling offer a warranty?",
     answer:
       "Yes. Most of our products and services come with an industry-leading warranty, as well as a one-time transfer of warranty — so you're covered for the long term. Our commitment to you doesn't end when your remodel is done. We want you to love your bathroom for years to come.",
   },
@@ -33,18 +35,27 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { ref, visible } = useScrollAnimation();
 
   return (
-    <section id="faqs" className="bg-white py-16">
+    <section id="faqs" ref={ref} className="bg-white py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center"
+        >
           Frequently Asked Questions
-        </h2>
+        </motion.h2>
 
         <div className="space-y-2">
           {faqs.map((faq, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, x: -20 }}
+              animate={visible ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="border border-gray-100 hover:border-[#E07B00]/30 transition-colors"
             >
               <button
@@ -67,7 +78,7 @@ export default function FAQSection() {
                   <p className="text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

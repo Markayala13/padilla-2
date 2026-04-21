@@ -1,25 +1,38 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function JennyMarrsSection() {
+  const { ref, visible } = useScrollAnimation();
+
   return (
-    <section className="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <section ref={ref} className="relative bg-[#1a1a1a] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left: image placeholder */}
-          <div className="flex-1 relative">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={visible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex-1 relative"
+          >
             <div className="aspect-[4/3] bg-gradient-to-br from-stone-700 to-stone-900 flex items-center justify-center">
               <div className="text-center text-white/30">
                 <div className="text-5xl mb-2">✦</div>
                 <div className="text-lg font-light">Jenny Marrs</div>
               </div>
             </div>
-            {/* Decorative border accent */}
             <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[#E07B00] opacity-40" />
-          </div>
+          </motion.div>
 
-          {/* Right: content */}
-          <div className="flex-1 max-w-lg">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={visible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="flex-1 max-w-lg"
+          >
             <div className="flex items-center gap-2 mb-4">
               <div className="h-px w-12 bg-[#E07B00]" />
               <span className="text-[#E07B00] text-sm font-semibold uppercase tracking-widest">
@@ -46,7 +59,7 @@ export default function JennyMarrsSection() {
               View Jenny&apos;s Custom Designs
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

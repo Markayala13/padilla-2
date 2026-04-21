@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const states = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
@@ -14,6 +16,7 @@ const states = [
 ];
 
 export default function LocationConsultationForm() {
+  const { ref, visible } = useScrollAnimation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -41,19 +44,29 @@ export default function LocationConsultationForm() {
   };
 
   return (
-    <section id="consultation" className="bg-[#f8f5f6] py-16">
+    <section id="consultation" ref={ref} className="bg-[#f8f5f6] py-16">
       <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-10"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Schedule Your Free In-Home Design Consultation
           </h2>
           <p className="text-gray-500 leading-relaxed">
-            Fill out the form below and a Re-Bath Dallas expert will contact you
+            Fill out the form below and a Padilla Prestige Remodeling expert will contact you
             within one business day to schedule your free in-home design consultation.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-white shadow-md p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="bg-white shadow-md p-8"
+        >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -183,7 +196,7 @@ export default function LocationConsultationForm() {
                 className="mt-0.5 accent-[#E07B00]"
               />
               <label htmlFor="smsConsent" className="text-xs text-gray-500 leading-relaxed">
-                I consent to receive SMS messages from Re-Bath Dallas regarding my
+                I consent to receive SMS messages from Padilla Prestige Remodeling regarding my
                 consultation request. Message and data rates may apply. Reply STOP to
                 unsubscribe.
               </label>
@@ -202,7 +215,7 @@ export default function LocationConsultationForm() {
               We will never sell your information.
             </p>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

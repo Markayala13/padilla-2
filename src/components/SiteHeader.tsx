@@ -30,7 +30,7 @@ export default function SiteHeader() {
             <Link href="/" className="shrink-0">
               <Image
                 src="/images/logo-padilla.png"
-                alt="Re-Bath"
+                alt="Padilla Prestige Remodeling"
                 width={90}
                 height={90}
                 priority

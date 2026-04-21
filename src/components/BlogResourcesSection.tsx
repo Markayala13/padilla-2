@@ -1,62 +1,71 @@
-import Link from "next/link";
-import Image from "next/image";
+"use client";
+
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const posts = [
   {
-    title: "One Day vs. Full Bathroom Remodels: Making the Right Choice for Your Home",
-    category: "Bathroom Design Trends",
-    href: "/blog/",
-    image: "/images/hero-blog.jpg",
+    title: "2025 Bathroom Design Trends You Need to Know",
+    category: "Design Inspiration",
+    href: "https://www.architecturaldigest.com/story/bathroom-design-trends",
+    source: "Architectural Digest",
   },
   {
-    title: "How to Finance Your 2026 Bathroom Remodel",
-    category: "Finance Bathroom Remodel",
-    href: "/blog/",
-    gradient: "from-slate-400 to-slate-600",
+    title: "Small Bathroom Ideas That Maximize Space and Style",
+    category: "Small Bathrooms",
+    href: "https://www.housebeautiful.com/room-decorating/bathroom/g1077/small-bathroom-ideas/",
+    source: "House Beautiful",
+  },
+  {
+    title: "The Best Bathroom Tile Ideas for Every Style",
+    category: "Tile & Flooring",
+    href: "https://www.elledecor.com/design-decorate/room-ideas/g39095655/bathroom-tile-ideas/",
+    source: "Elle Decor",
   },
 ];
 
 export default function BlogResourcesSection() {
+  const { ref, visible } = useScrollAnimation();
+
   return (
-    <section className="bg-white py-16">
+    <section ref={ref} className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="mb-10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Expert Guides for Your Next Bathroom
           </h2>
-          <Link
-            href="/blog/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#E07B00] whitespace-nowrap hover:gap-3 transition-all"
-          >
-            View All Guides <ArrowRight size={16} />
-          </Link>
-        </div>
+          <p className="text-gray-500 text-sm">Curated articles from top design magazines and home publications.</p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
-          {posts.map((post) => (
-            <Link key={post.title} href={post.href} className="group block">
-              <div className="relative aspect-[16/9] overflow-hidden mb-4">
-                {post.image ? (
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                ) : (
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${post.gradient} group-hover:scale-105 transition-transform duration-500`}
-                  />
-                )}
-              </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post, i) => (
+            <motion.a
+              key={post.title}
+              href={post.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 40 }}
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.12 }}
+              className="group block border border-gray-100 rounded-lg p-6 hover:shadow-md transition-shadow"
+            >
               <p className="text-xs text-[#E07B00] font-semibold uppercase tracking-wide mb-2">
                 {post.category}
               </p>
-              <h3 className="text-base font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors">
+              <h3 className="text-base font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors mb-4">
                 {post.title}
               </h3>
-            </Link>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="text-xs text-gray-400 italic">{post.source}</span>
+                <ArrowRight size={15} className="text-[#E07B00] group-hover:translate-x-1 transition-transform" />
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -16,7 +16,7 @@ export default function ReviewsSection() {
           Trusted by Homeowners from Coast to Coast
         </h2>
         <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">
-          More than 35,000 Re-Bath customers have reviewed their experiences,
+          More than 35,000 Padilla Prestige Remodeling customers have reviewed their experiences,
           and we&apos;re proud of our{" "}
           <strong className="text-gray-900">4.8 out of 5 rating</strong>.
         </p>

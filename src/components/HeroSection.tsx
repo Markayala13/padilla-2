@@ -50,14 +50,14 @@ export default function HeroSection() {
             Made Easy
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-md mb-8">
-            Remodeling your bathroom with Re-Bath is fast, easy, and more affordable
+            Remodeling your bathroom with Padilla Prestige Remodeling is fast, easy, and more affordable
             than you might think.
           </p>
           <a
             href="/find-a-location/"
             className="inline-block bg-[#E07B00] hover:bg-[#B56000] text-white font-semibold px-8 py-4 transition-colors text-sm uppercase tracking-wide"
           >
-            Find Your Local Re-Bath
+            Find Your Local Padilla Prestige Remodeling
           </a>
         </div>
 

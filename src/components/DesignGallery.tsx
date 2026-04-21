@@ -11,31 +11,31 @@ const designs = [
     name: "Brushed Linen Modern",
     style: "Modern",
     gradient: "from-stone-300 to-stone-400",
-    href: "/rebath-design-gallery/",
+    href: "/gallery/",
   },
   {
     name: "White Subway Transitional",
     style: "Transitional",
     gradient: "from-slate-200 to-slate-300",
-    href: "/rebath-design-gallery/",
+    href: "/gallery/",
   },
   {
     name: "Teakwood Transitional",
     style: "Transitional",
     gradient: "from-amber-200 to-stone-300",
-    href: "/rebath-design-gallery/",
+    href: "/gallery/",
   },
   {
     name: "White Picket Modern",
     style: "Modern",
     gradient: "from-zinc-100 to-zinc-200",
-    href: "/rebath-design-gallery/",
+    href: "/gallery/",
   },
   {
     name: "Classic Marble Traditional",
     style: "Traditional",
     gradient: "from-gray-100 to-gray-200",
-    href: "/rebath-design-gallery/",
+    href: "/gallery/",
   },
   {
     name: "Jenny Signature Series",
@@ -103,10 +103,10 @@ export default function DesignGallery() {
 
         <div className="text-center mt-10">
           <Link
-            href="/rebath-design-gallery/"
+            href="/gallery/"
             className="inline-flex items-center gap-2 text-[#E07B00] font-semibold hover:gap-3 transition-all text-sm uppercase tracking-wide"
           >
-            Get Inspired by Real Re-Bath Remodels
+            Get Inspired by Real Padilla Prestige Remodeling Remodels
             <ArrowRight size={16} />
           </Link>
         </div>

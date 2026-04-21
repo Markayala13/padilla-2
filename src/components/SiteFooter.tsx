@@ -54,7 +54,7 @@ export default function SiteFooter() {
               className="mb-5 rounded-full"
             />
             <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-xs">
-              Re-Bath is America&apos;s largest bathroom remodeling company,
+              Padilla Prestige Remodeling is America&apos;s largest bathroom remodeling company,
               transforming bathrooms nationwide with expert design, quality
               materials, and professional installation.
             </p>
@@ -62,7 +62,7 @@ export default function SiteFooter() {
             <div className="flex gap-3">
               {[
                 {
-                  href: "https://www.facebook.com/officialrebath/",
+                  href: "https://www.facebook.com/",
                   label: "Facebook",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -71,7 +71,7 @@ export default function SiteFooter() {
                   ),
                 },
                 {
-                  href: "https://www.instagram.com/officialrebath/",
+                  href: "https://www.instagram.com/",
                   label: "Instagram",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -82,7 +82,7 @@ export default function SiteFooter() {
                   ),
                 },
                 {
-                  href: "https://www.youtube.com/rebath",
+                  href: "https://www.youtube.com/",
                   label: "YouTube",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -158,7 +158,7 @@ export default function SiteFooter() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>© 2026 ReBath, LLC. All Rights Reserved.</p>
+          <p>© 2026 Padilla Prestige Remodeling LLC. All Rights Reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy/" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
             <Link href="/privacy-choices/" className="hover:text-white/70 transition-colors">Your Privacy Choices</Link>

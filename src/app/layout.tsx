@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Re-Bath® | Bathroom Remodeling",
+  title: "Padilla Prestige Remodeling | Bathroom Remodeling",
   description:
-    "Remodeling your bathroom with Re-Bath is fast, easy, and more affordable than you might think. Get a free in-home design consultation today.",
+    "Remodeling your bathroom with Padilla Prestige Remodeling is fast, easy, and more affordable than you might think. Get a free in-home design consultation today.",
 };
 
 export default function RootLayout({
