@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -52,13 +50,6 @@ export default function JennyMarrsSection() {
               bathroom into a space you&apos;ll love — crafted by one of America&apos;s
               most beloved home renovation experts.
             </p>
-            <Link
-              href="/design/jenny-marrs/"
-              className="inline-flex items-center gap-3 bg-[#E07B00] hover:bg-[#B56000] text-white font-semibold px-7 py-3.5 transition-colors text-sm uppercase tracking-wide"
-            >
-              View Jenny&apos;s Custom Designs
-              <ArrowRight size={16} />
-            </Link>
           </motion.div>
         </div>
       </div>

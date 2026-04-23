@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -86,19 +84,6 @@ export default function BeforeAfterGallery() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={visible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="text-center mt-10"
-        >
-          <Link
-            href="/results/"
-            className="inline-flex items-center gap-2 text-[#E07B00] font-semibold text-sm uppercase tracking-wide hover:gap-3 transition-all"
-          >
-            View Full Gallery <ArrowRight size={16} />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

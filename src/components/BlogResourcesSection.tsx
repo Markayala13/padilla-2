@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const posts = [
   {
@@ -26,15 +25,14 @@ const posts = [
 ];
 
 export default function BlogResourcesSection() {
-  const { ref, visible } = useScrollAnimation();
-
   return (
-    <section ref={ref} className="bg-white py-16">
+    <section className="bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={visible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -50,20 +48,27 @@ export default function BlogResourcesSection() {
               href={post.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 40 }}
-              animate={visible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: i * 0.12 }}
-              className="group block border border-gray-100 rounded-lg p-6 hover:shadow-md transition-shadow"
+              initial={{ opacity: 0, y: 50, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ type: "spring" as const, stiffness: 80, damping: 18, delay: i * 0.12 }}
+              whileHover={{ y: -10, boxShadow: "0 28px 50px rgba(0,0,0,0.12)", transition: { type: "spring" as const, stiffness: 400, damping: 25 } }}
+              className="group block border border-gray-100 rounded-xl p-6"
             >
               <p className="text-xs text-[#E07B00] font-semibold uppercase tracking-wide mb-2">
                 {post.category}
               </p>
-              <h3 className="text-base font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors mb-4">
+              <h3 className="text-base font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors duration-300 mb-4">
                 {post.title}
               </h3>
               <div className="flex items-center justify-between mt-auto">
                 <span className="text-xs text-gray-400 italic">{post.source}</span>
-                <ArrowRight size={15} className="text-[#E07B00] group-hover:translate-x-1 transition-transform" />
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring" as const, stiffness: 400, damping: 20 }}
+                >
+                  <ArrowRight size={15} className="text-[#E07B00]" />
+                </motion.div>
               </div>
             </motion.a>
           ))}

@@ -1,92 +1,77 @@
 "use client";
-import Link from "next/link";
-import { MapPin, Phone, Clock, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const slides = [
+  "/images/hero-dallas.jpg",
+  "/images/hero-slide-1.jpg",
+  "/images/hero-slide-2.jpg",
+  "/images/hero-slide-3.jpg",
+];
 
 export default function LocationHero() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="flex flex-col md:flex-row min-h-[520px]">
-      {/* Left: content panel */}
-      <div className="order-2 md:order-1 w-full md:w-1/2 bg-[#f0f0f0] flex items-center justify-center px-8 py-12 md:px-16 md:py-16">
-        <div className="w-full max-w-md">
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-sm text-gray-500 mb-5 flex items-center gap-1.5"
-          >
-            <Link href="/" className="hover:text-gray-700 transition-colors">All locations</Link>
-            <span>/</span>
-            <span className="text-gray-700">Texas</span>
-          </motion.nav>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-[#2c3e50] leading-tight mb-8"
-          >
-            Bathroom<br />Remodeling in<br />Dallas
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Link
-              href="#consultation"
-              className="inline-block bg-[#E07B00] hover:bg-[#B56000] text-white font-semibold px-8 py-3.5 rounded-full text-sm transition-colors mb-10"
-            >
-              Book Free Consultation
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col gap-4 text-sm text-gray-700"
-          >
-            <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-gray-500" />
-              <span>3209 Oceanview St, Irving, TX 75062</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-4 h-4 shrink-0 text-gray-500" />
-              <a href="tel:12148105012" className="hover:text-[#E07B00] transition-colors">
-                +1 (214) 810-5012
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-4 h-4 shrink-0 text-gray-500" />
-              <a href="mailto:padillajose662@gmail.com" className="hover:text-[#E07B00] transition-colors">
-                padillajose662@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="w-4 h-4 shrink-0 text-gray-500" />
-              <Link href="#hours" className="font-semibold hover:text-[#E07B00] transition-colors flex items-center gap-1">
-                Hours &amp; Location Details <span className="text-base">›</span>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Right: bathroom photo */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="order-1 md:order-2 w-full md:w-1/2 min-h-[300px] md:min-h-0 relative overflow-hidden"
-      >
-        <img
-          src="/images/hero-dallas.jpg"
+    <section className="w-full h-[520px] relative overflow-hidden">
+      {/* Slides */}
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={current}
+          src={slides[current]}
           alt="Bathroom remodel in Dallas"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-      </motion.div>
+      </AnimatePresence>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/45" />
+
+      {/* Text overlay */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+        >
+          Beautiful Bathrooms<br />Made Easy
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-white/90 text-lg md:text-xl max-w-xl mb-8"
+        >
+          Remodeling your bathroom with Padilla Prestige Remodeling LLC is fast,
+          easy, and more affordable than you might think.
+        </motion.p>
+
+        <motion.a
+          href="tel:12148105012"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="inline-flex items-center gap-3 bg-[#E07B00] hover:bg-[#B56000] text-white font-bold px-8 py-4 rounded-full text-lg transition-colors"
+        >
+          <Phone size={22} />
+          Call Now — (214) 810-5012
+        </motion.a>
+
+      </div>
     </section>
   );
 }

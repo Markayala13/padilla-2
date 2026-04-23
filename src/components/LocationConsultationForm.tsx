@@ -53,12 +53,8 @@ export default function LocationConsultationForm() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Schedule Your Free In-Home Design Consultation
+            Get a Professional Bathroom Remodel Plan — Free Consultation
           </h2>
-          <p className="text-gray-500 leading-relaxed">
-            Fill out the form below and a Padilla Prestige Remodeling expert will contact you
-            within one business day to schedule your free in-home design consultation.
-          </p>
         </motion.div>
 
         <motion.div
