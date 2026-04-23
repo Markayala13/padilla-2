@@ -9,18 +9,21 @@ const posts = [
     category: "Design Inspiration",
     href: "https://www.architecturaldigest.com/story/bathroom-design-trends",
     source: "Architectural Digest",
+    image: "/images/blog-1.jpg",
   },
   {
     title: "Small Bathroom Ideas That Maximize Space and Style",
     category: "Small Bathrooms",
     href: "https://www.housebeautiful.com/room-decorating/bathroom/g1077/small-bathroom-ideas/",
     source: "House Beautiful",
+    image: "/images/blog-2.jpg",
   },
   {
     title: "The Best Bathroom Tile Ideas for Every Style",
     category: "Tile & Flooring",
     href: "https://www.elledecor.com/design-decorate/room-ideas/g39095655/bathroom-tile-ideas/",
     source: "Elle Decor",
+    image: "/images/blog-3.jpg",
   },
 ];
 
@@ -50,25 +53,32 @@ export default function BlogResourcesSection() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 50, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ type: "spring" as const, stiffness: 80, damping: 18, delay: i * 0.12 }}
-              whileHover={{ y: -10, boxShadow: "0 28px 50px rgba(0,0,0,0.12)", transition: { type: "spring" as const, stiffness: 400, damping: 25 } }}
-              className="group block border border-gray-100 rounded-xl p-6"
+              whileHover={{ y: -8, boxShadow: "0 28px 50px rgba(0,0,0,0.12)", transition: { type: "spring" as const, stiffness: 400, damping: 25 } }}
+              className="group block border border-gray-100 rounded-xl overflow-hidden"
             >
-              <p className="text-xs text-[#E07B00] font-semibold uppercase tracking-wide mb-2">
-                {post.category}
-              </p>
-              <h3 className="text-base font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors duration-300 mb-4">
-                {post.title}
-              </h3>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="text-xs text-gray-400 italic">{post.source}</span>
-                <motion.div
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring" as const, stiffness: 400, damping: 20 }}
-                >
-                  <ArrowRight size={15} className="text-[#E07B00]" />
-                </motion.div>
+              {/* Image */}
+              <div className="h-44 overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="p-5">
+                <p className="text-xs text-[#E07B00] font-semibold uppercase tracking-wide mb-2">
+                  {post.category}
+                </p>
+                <h3 className="text-sm font-bold text-gray-900 leading-snug group-hover:text-[#E07B00] transition-colors duration-300 mb-4">
+                  {post.title}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gray-400 italic">{post.source}</span>
+                  <ArrowRight size={14} className="text-[#E07B00] group-hover:translate-x-1 transition-transform duration-200" />
+                </div>
               </div>
             </motion.a>
           ))}

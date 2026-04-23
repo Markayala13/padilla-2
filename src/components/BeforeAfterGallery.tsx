@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projects = [
   { label: "Master Shower Remodel", style: "Modern" },
@@ -12,24 +11,39 @@ const projects = [
   { label: "Bathtub Replacement", style: "Classic" },
 ];
 
-function ProjectCard({ label, style, isBefore }: { label: string; style: string; isBefore: boolean }) {
-  const gradients = [
-    "from-stone-300 to-stone-500",
-    "from-slate-300 to-slate-500",
-    "from-zinc-300 to-zinc-500",
-    "from-neutral-300 to-neutral-500",
-    "from-gray-300 to-gray-500",
-    "from-warm-gray-300 to-warm-gray-500",
-  ];
-  const idx = ["Master Shower Remodel","Full Bathroom Renovation","Walk-In Shower Conversion","Tub-to-Shower Conversion","Accessible Bathroom","Bathtub Replacement"].indexOf(label);
-  const grad = gradients[idx % gradients.length];
+const gradients = [
+  "from-stone-300 to-stone-500",
+  "from-slate-300 to-slate-500",
+  "from-zinc-300 to-zinc-500",
+  "from-neutral-300 to-neutral-500",
+  "from-gray-300 to-gray-500",
+  "from-stone-200 to-stone-400",
+];
 
+function ProjectCard({ style, isBefore, index }: { style: string; isBefore: boolean; index: number }) {
+  const realImages: Record<number, { before: string; after: string }> = {
+    0: { before: "/images/before-1.png", after: "/images/after-1.png" },
+    1: { before: "/images/before-2.png", after: "/images/after-2.png" },
+    2: { before: "/images/before-3.jpg", after: "/images/after-3.png" },
+    3: { before: "/images/before-4.jpg", after: "/images/after-4.png" },
+    4: { before: "/images/before-5.jpg", after: "/images/after-5.png" },
+    5: { before: "/images/before-6.jpg", after: "/images/after-6.png" },
+  };
+  const isReal = index in realImages;
   return (
     <div className="relative aspect-[4/3] overflow-hidden group">
-      <div
-        className={`w-full h-full bg-gradient-to-br ${isBefore ? grad : "from-stone-100 to-stone-300"} transition-transform duration-500 group-hover:scale-105`}
-        style={{ filter: isBefore ? "saturate(0.5) brightness(0.8)" : "saturate(1.1) brightness(1.05)" }}
-      />
+      {isReal ? (
+        <img
+          src={isBefore ? realImages[index].before : realImages[index].after}
+          alt={isBefore ? "Before remodel" : "After remodel"}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <div
+          className={`w-full h-full bg-gradient-to-br ${isBefore ? gradients[index % gradients.length] : "from-stone-100 to-stone-300"} transition-transform duration-500 group-hover:scale-105`}
+          style={{ filter: isBefore ? "saturate(0.5) brightness(0.8)" : "saturate(1.1) brightness(1.05)" }}
+        />
+      )}
       <div
         className={`absolute top-2 left-2 text-xs font-bold uppercase tracking-wide px-2 py-1 ${
           isBefore ? "bg-gray-700 text-white" : "bg-[#E07B00] text-white"
@@ -47,15 +61,14 @@ function ProjectCard({ label, style, isBefore }: { label: string; style: string;
 }
 
 export default function BeforeAfterGallery() {
-  const { ref, visible } = useScrollAnimation();
-
   return (
-    <section id="projects" ref={ref} className="bg-[#f8f5f6] py-16">
+    <section id="projects" className="bg-[#f8f5f6] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={visible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -71,19 +84,19 @@ export default function BeforeAfterGallery() {
           {projects.map((p, i) => (
             <motion.div
               key={p.label}
-              initial={{ opacity: 0, y: 40 }}
-              animate={visible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ type: "spring" as const, stiffness: 75, damping: 18, delay: i * 0.1 }}
             >
               <p className="text-sm font-semibold text-gray-700 mb-2">{p.label}</p>
               <div className="grid grid-cols-2 gap-1.5">
-                <ProjectCard label={p.label} style={p.style} isBefore={true} />
-                <ProjectCard label={p.label} style={p.style} isBefore={false} />
+                <ProjectCard style={p.style} isBefore={true} index={i} />
+                <ProjectCard style={p.style} isBefore={false} index={i} />
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
