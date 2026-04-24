@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    question: "What is the cost of a Padilla Prestige Remodeling bathroom remodel in Dallas, TX?",
+    question: "What is the cost of a Padilla Prestige Remodeling LLC bathroom remodel in Dallas, TX?",
     answer: "Because all bathroom sizes and project scopes are unique, we offer a FREE in-home bathroom consultation. A design consultant will visit your home to understand your needs, style, and budget while taking measurements for accurate pricing. This ensures you get a custom quote tailored exactly to your project — no guessing, no surprises.",
   },
   {
@@ -14,15 +14,15 @@ const faqs = [
     answer: "Remodeling your bathroom increases your home's value while adding comfort, safety, and convenience to your daily life. Your bathroom should be a beautiful and inviting space, especially since it's one of the most visible areas for guests. Investing in a home renovation project takes careful planning and consideration — and our team is here to help every step of the way.",
   },
   {
-    question: "Does Padilla Prestige Remodeling offer a Design Service?",
-    answer: "Yes! At Padilla Prestige Remodeling, we believe good design is something everyone should enjoy. Our designers offer traditional, transitional, rustic, and contemporary aesthetics created by certified interior designers. Your free in-home design consultation includes personalized recommendations for your style, space, and budget.",
+    question: "Does Padilla Prestige Remodeling LLC offer a Design Service?",
+    answer: "Yes! At Padilla Prestige Remodeling LLC, we believe good design is something everyone should enjoy. Our designers offer traditional, transitional, rustic, and contemporary aesthetics created by certified interior designers. Your free in-home design consultation includes personalized recommendations for your style, space, and budget.",
   },
   {
-    question: "How long does a Padilla Prestige Remodeling installation take?",
-    answer: "Project length depends on bathroom size, materials, job complexity, and any hidden issues discovered during installation. Most Padilla Prestige Remodeling projects are completed in just days, not weeks — with over 40 years in the industry, our highly qualified team is fully licensed and insured to complete custom bathroom renovations in just 3–5 days.",
+    question: "How long does a Padilla Prestige Remodeling LLC installation take?",
+    answer: "Project length depends on bathroom size, materials, job complexity, and any hidden issues discovered during installation. Most Padilla Prestige Remodeling LLC projects are completed in just days, not weeks — with over 40 years in the industry, our highly qualified team is fully licensed and insured to complete custom bathroom renovations in just 3–5 days.",
   },
   {
-    question: "Does Padilla Prestige Remodeling offer a warranty?",
+    question: "Does Padilla Prestige Remodeling LLC offer a warranty?",
     answer: "Yes. Most of our products and services come with an industry-leading warranty, as well as a one-time transfer of warranty — so you're covered for the long term. Our commitment to you doesn't end when your remodel is done. We want you to love your bathroom for years to come.",
   },
 ];

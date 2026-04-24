@@ -86,11 +86,11 @@ export default function LocationInfo() {
                       <div className="text-sm text-gray-600 space-y-0.5">
                         <div className="flex justify-between gap-6">
                           <span>Monday – Friday</span>
-                          <span className="font-medium text-gray-800">9:00 am – 5:00 pm</span>
+                          <span className="font-medium text-gray-800">7:00 am – 8:00 pm</span>
                         </div>
                         <div className="flex justify-between gap-6">
                           <span>Saturday – Sunday</span>
-                          <span className="font-medium text-gray-800">Closed</span>
+                          <span className="font-medium text-gray-800">8:00 am – 5:00 pm</span>
                         </div>
                       </div>
                     </div>

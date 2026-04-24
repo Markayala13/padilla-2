@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -6,16 +8,19 @@ const services = [
     title: "Full Bathroom Remodels",
     description: "Transform your entire bathroom from top to bottom. Our team handles everything — from design to demo to installation — using beautiful, high-quality materials tailored to your style.",
     image: "/images/service-1.jpg",
+    href: "/services/full-bathroom-remodel",
   },
   {
     title: "Accessible Bathroom Remodels",
     description: "Create a bathroom that's functional, safe, and beautifully designed. We specialize in ADA-compliant upgrades, slip-resistant surfaces, grab bars, walk-in tubs, and barrier-free showers.",
     image: "/images/service-2.jpg",
+    href: "/services/accessible-bathrooms",
   },
   {
     title: "Tub & Shower Updates",
     description: "Update your tub or shower without a full remodel. From tub-to-shower conversions to new surrounds and fixtures, we deliver a fresh look in just days.",
     image: "/images/service-3.jpg",
+    href: "/services/tub-shower-updates",
   },
 ];
 
@@ -83,7 +88,15 @@ export default function ServicesSection() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E07B00] transition-colors duration-300">{service.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{service.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">{service.description}</p>
+                {service.href && (
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#E07B00] hover:gap-3 transition-all"
+                  >
+                    View Gallery <ArrowRight size={15} />
+                  </Link>
+                )}
               </div>
               <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-[#E07B00] group-hover:w-full transition-all duration-500" />
             </motion.div>

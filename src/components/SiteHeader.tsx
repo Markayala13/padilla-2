@@ -100,6 +100,18 @@ export default function SiteHeader() {
         </div>
       </div>
 
+      {/* ── Booking bar ── */}
+      <div className="bg-[#E07B00] w-full">
+        <div className="max-w-7xl mx-auto px-6 py-2.5 flex justify-center">
+          <Link
+            href="/#projects"
+            className="text-white font-bold text-sm tracking-wide hover:opacity-90 transition-opacity"
+          >
+            ✦ See the Magic ✦
+          </Link>
+        </div>
+      </div>
+
       {/* ── Mobile menu ── */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 pb-4">
