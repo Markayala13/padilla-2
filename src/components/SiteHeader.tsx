@@ -91,7 +91,7 @@ export default function SiteHeader() {
               Find a Location
             </Link>
             <Link
-              href="/free-consultation/"
+              href="/#consultation"
               className="text-sm font-semibold text-white bg-[#E07B00] px-5 py-2 rounded-full hover:bg-[#B56000] transition-colors"
             >
               Free Consultation
@@ -128,14 +128,7 @@ export default function SiteHeader() {
           ))}
           <div className="px-4 pt-3 flex flex-col gap-2">
             <Link
-              href="/find-a-location/"
-              className="block text-center text-[#E07B00] border border-[#E07B00] text-sm font-semibold px-5 py-3 rounded-full"
-              onClick={() => setMobileOpen(false)}
-            >
-              Find a Location
-            </Link>
-            <Link
-              href="/free-consultation/"
+              href="/#consultation"
               className="block text-center bg-[#E07B00] text-white text-sm font-semibold px-5 py-3 rounded-full"
               onClick={() => setMobileOpen(false)}
             >
