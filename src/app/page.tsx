@@ -1,4 +1,5 @@
 import SiteHeader from "@/components/SiteHeader";
+import FloatingGoogleButton from "@/components/FloatingGoogleButton";
 import LocationHero from "@/components/LocationHero";
 import LocationInfo from "@/components/LocationInfo";
 import FeaturesBar from "@/components/FeaturesBar";
@@ -43,6 +44,7 @@ export default function Home() {
         <BlogResourcesSection />
       </main>
       <SiteFooter />
+      <FloatingGoogleButton />
     </>
   );
 }

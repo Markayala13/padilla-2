@@ -25,7 +25,7 @@ export default function SiteHeader() {
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
-          {/* Left: logo + location */}
+          {/* Left: logo + phone button + location */}
           <div className="flex items-center gap-4">
             <Link href="/" className="shrink-0">
               <Image
@@ -37,6 +37,15 @@ export default function SiteHeader() {
                 className="rounded-full"
               />
             </Link>
+            <a
+              href="tel:12148105012"
+              className="flex items-center gap-2 bg-[#E07B00] hover:bg-[#B56000] text-white text-sm font-bold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-200 group"
+            >
+              <span className="flex items-center justify-center w-6 h-6 bg-white/20 rounded-full group-hover:bg-white/30 transition-colors">
+                <Phone size={13} className="shrink-0" />
+              </span>
+              <span>214-810-5012</span>
+            </a>
             <button className="flex items-center gap-1 text-[#E07B00] font-medium text-sm hover:opacity-80 transition-opacity">
               Dallas
               <ChevronDown size={14} />
@@ -103,12 +112,12 @@ export default function SiteHeader() {
       {/* ── Booking bar ── */}
       <div className="bg-[#E07B00] w-full">
         <div className="max-w-7xl mx-auto px-6 py-2.5 flex justify-center">
-          <Link
+          <a
             href="/#projects"
             className="text-white font-bold text-sm tracking-wide hover:opacity-90 transition-opacity"
           >
             View Before &amp; After Projects
-          </Link>
+          </a>
         </div>
       </div>
 
