@@ -15,8 +15,6 @@ import LocationConsultationForm from "@/components/LocationConsultationForm";
 import BlogResourcesSection from "@/components/BlogResourcesSection";
 import TrustSection from "@/components/TrustSection";
 import SiteFooter from "@/components/SiteFooter";
-import FloatingGoogleButton from "@/components/FloatingGoogleButton";
-
 export const metadata = {
   title: "Bathroom Remodeling in Dallas, TX | Padilla Prestige Remodeling",
   description:
@@ -45,7 +43,6 @@ export default function Home() {
         <BlogResourcesSection />
       </main>
       <SiteFooter />
-      <FloatingGoogleButton />
     </>
   );
 }

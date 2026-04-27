@@ -72,8 +72,8 @@ export default function LocationInfo() {
                     </div>
                     <div>
                       <h3 className="font-bold text-gray-900 mb-1">Email Us</h3>
-                      <a href="mailto:padillajose662@gmail.com" className="text-[#E07B00] text-sm hover:underline">
-                        padillajose662@gmail.com
+                      <a href="mailto:info@padillasprestigedfw.com" className="text-[#E07B00] text-sm hover:underline">
+                        info@padillasprestigedfw.com
                       </a>
                     </div>
                   </div>

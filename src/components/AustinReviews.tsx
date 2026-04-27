@@ -105,6 +105,24 @@ export default function AustinReviews() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex justify-center mt-12"
+        >
+          <a
+            href="https://www.google.com/search?client=mobilesearchapp&sa=X&sca_esv=564481a6c5832954&channel=iss&cs=0&hl=en&rlz=1MDAPLA_enUS1189US1189&v=402.0.850515619&biw=1920&bih=953&aic=0&sxsrf=ANbL-n6YYcXiBIh_sE1DdeUUuiXQ8r1YWQ:1768090879027&kgmid=/g/11yklvv7v1&q=Padilla%E2%80%99s+Prestige+Remodeling&shem=ptotplc,shrtsdl&shndl=30&source=sh/x/loc/uni/m1/1&kgs=17a1a39daa90fe82&utm_source=ptotplc,shrtsdl,sh/x/loc/uni/m1/1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#E07B00] hover:bg-[#B56000] text-white font-bold px-8 py-4 rounded-full text-sm transition-colors shadow-lg"
+          >
+            ⭐ Leave Us a Review
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );

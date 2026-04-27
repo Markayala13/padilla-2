@@ -107,7 +107,7 @@ export default function SiteHeader() {
             href="/#projects"
             className="text-white font-bold text-sm tracking-wide hover:opacity-90 transition-opacity"
           >
-            ✦ See the Magic ✦
+            View Before &amp; After Projects
           </Link>
         </div>
       </div>

@@ -1,80 +1,155 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 const images = Array.from({ length: 13 }, (_, i) => `/images/tub-shower-${i + 1}.jpg`);
 
 export default function TubShowerGallery() {
-  return (
-    <main className="bg-[#f8f5f6] min-h-screen py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-10"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#E07B00] font-semibold mb-6 hover:gap-3 transition-all"
-          >
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightbox(i => i !== null ? (i - 1 + images.length) % images.length : null);
+  };
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightbox(i => i !== null ? (i + 1) % images.length : null);
+  };
+
+  return (
+    <main className="min-h-screen bg-white">
+
+      {/* Dark hero header */}
+      <div className="bg-gray-950 pt-[140px] md:pt-[200px] pb-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-[#E07B00] font-semibold mb-8 hover:gap-3 transition-all">
             <ArrowLeft size={16} /> Back to Home
           </Link>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-bold text-white mb-8"
+          >
             Tub &amp; Shower Updates
-          </h1>
-          <p className="text-gray-500 max-w-2xl text-base leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
+            className="text-gray-400 max-w-2xl text-lg leading-relaxed"
+          >
             Explore our gallery of tub and shower transformations. From quick updates to complete
             conversions — see the quality and craftsmanship Padilla Prestige Remodeling delivers.
-          </p>
-          <div className="mt-4 h-1 w-16 bg-[#E07B00] rounded-full" />
-        </motion.div>
-
-        {/* Masonry-style grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          {images.map((src, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ type: "spring" as const, stiffness: 80, damping: 18, delay: i * 0.05 }}
-              whileHover={{ scale: 1.02, transition: { type: "spring" as const, stiffness: 400, damping: 25 } }}
-              className="break-inside-avoid overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-500 cursor-pointer"
-            >
-              <img
-                src={src}
-                alt={`Tub & Shower remodel ${i + 1}`}
-                className="w-full h-auto object-cover"
-              />
-            </motion.div>
-          ))}
+          </motion.p>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mt-6 h-1 w-20 bg-[#E07B00] rounded-full origin-left"
+          />
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-600 text-lg mb-6">
-            Ready to transform your tub or shower?
-          </p>
-          <Link
-            href="/#consultation"
-            className="inline-block bg-[#E07B00] hover:bg-[#B56000] text-white font-bold px-10 py-4 rounded-full text-base transition-colors"
-          >
-            Book Your Free Consultation
-          </Link>
-        </motion.div>
-
       </div>
+
+      {/* Bento grid */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-auto">
+          {images.map((src, i) => {
+            const isFeatured = i % 5 === 0;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ type: "spring" as const, stiffness: 80, damping: 18, delay: (i % 6) * 0.06 }}
+                onClick={() => setLightbox(i)}
+                className={`group relative overflow-hidden rounded-2xl cursor-pointer${isFeatured ? " col-span-2" : ""}`}
+              >
+                <div className={`relative overflow-hidden ${isFeatured ? "aspect-[16/9]" : "aspect-square"}`}>
+                  <img
+                    src={src}
+                    alt={`Tub & Shower remodel ${i + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full p-3">
+                      <ZoomIn size={22} className="text-white" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="text-center pb-20 px-4"
+      >
+        <p className="text-gray-500 text-lg mb-6">Ready to transform your tub or shower?</p>
+        <Link
+          href="/#consultation"
+          className="inline-block bg-[#E07B00] hover:bg-[#B56000] text-white font-bold px-10 py-4 rounded-full text-base transition-colors"
+        >
+          Book Your Free Consultation
+        </Link>
+      </motion.div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <button
+              className="absolute top-5 right-5 text-white/60 hover:text-white transition-colors p-2"
+              onClick={() => setLightbox(null)}
+            >
+              <X size={28} />
+            </button>
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
+              onClick={prev}
+            >
+              <ChevronLeft size={38} />
+            </button>
+            <motion.img
+              key={lightbox}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.25 }}
+              src={images[lightbox]}
+              alt={`Tub & Shower remodel ${lightbox + 1}`}
+              className="max-h-[85vh] max-w-[80vw] object-contain rounded-xl shadow-2xl"
+              onClick={e => e.stopPropagation()}
+            />
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
+              onClick={next}
+            >
+              <ChevronRight size={38} />
+            </button>
+            <div className="absolute bottom-5 text-white/40 text-sm tracking-widest">
+              {lightbox + 1} / {images.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

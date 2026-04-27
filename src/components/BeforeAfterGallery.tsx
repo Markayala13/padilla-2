@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 
 const projects = [
+  { label: "Custom Tile Shower", style: "Modern" },
+  { label: "Master Bath Renovation", style: "Luxury" },
+  { label: "Barrier-Free Shower", style: "Contemporary" },
   { label: "Master Shower Remodel", style: "Modern" },
   { label: "Full Bathroom Renovation", style: "Traditional" },
   { label: "Walk-In Shower Conversion", style: "Contemporary" },
   { label: "Tub-to-Shower Conversion", style: "Transitional" },
   { label: "Accessible Bathroom", style: "ADA Compliant" },
   { label: "Bathtub Replacement", style: "Classic" },
-  { label: "Custom Tile Shower", style: "Modern" },
-  { label: "Master Bath Renovation", style: "Luxury" },
-  { label: "Barrier-Free Shower", style: "Contemporary" },
 ];
 
 const gradients = [
@@ -25,15 +25,15 @@ const gradients = [
 
 function ProjectCard({ style, isBefore, index }: { style: string; isBefore: boolean; index: number }) {
   const realImages: Record<number, { before: string; after: string }> = {
-    0: { before: "/images/before-1.png", after: "/images/after-1.png" },
-    1: { before: "/images/before-2.png", after: "/images/after-2.png" },
-    2: { before: "/images/before-3.jpg", after: "/images/after-3.png" },
-    3: { before: "/images/before-4.jpg", after: "/images/after-4.png" },
-    4: { before: "/images/before-5.jpeg", after: "/images/after-5.jpeg" },
-    5: { before: "/images/before-6.jpeg", after: "/images/after-6.jpeg" },
-    6: { before: "/images/before-7.jpeg", after: "/images/after-7.jpeg" },
-    7: { before: "/images/before-8.jpeg", after: "/images/after-8.jpeg" },
-    8: { before: "/images/before-9.jpeg", after: "/images/after-9.jpeg" },
+    0: { before: "/images/before-7.jpeg", after: "/images/after-7.jpeg" },
+    1: { before: "/images/before-8.jpeg", after: "/images/after-8.jpeg" },
+    2: { before: "/images/before-9.jpeg", after: "/images/after-9.jpeg" },
+    3: { before: "/images/before-1.png", after: "/images/after-1.png" },
+    4: { before: "/images/before-2.png", after: "/images/after-2.png" },
+    5: { before: "/images/before-3.jpg", after: "/images/after-3.png" },
+    6: { before: "/images/before-4.jpg", after: "/images/after-4.png" },
+    7: { before: "/images/before-5.jpeg", after: "/images/after-5.jpeg" },
+    8: { before: "/images/before-6.jpeg", after: "/images/after-6.jpeg" },
   };
   const isReal = index in realImages;
   return (
