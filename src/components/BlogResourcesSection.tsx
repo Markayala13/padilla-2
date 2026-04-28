@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 
 const posts = [
   {
-    title: "2025 Bathroom Design Trends You Need to Know",
-    category: "Design Inspiration",
-    href: "https://www.architecturaldigest.com/story/bathroom-design-trends",
-    source: "Architectural Digest",
-    image: "/images/blog-1.jpg",
+    title: "Meet Jose Padilla of Padilla’s Prestige Remodeling",
+    category: "Local Stories",
+    href: "https://voyagedallas.com/",
+    source: "Voyage Dallas",
+    image: "/images/revista.png",
+    objectPosition: "center top",
+    fullImage: true,
   },
   {
     title: "Small Bathroom Ideas That Maximize Space and Style",
@@ -17,6 +19,7 @@ const posts = [
     href: "https://www.housebeautiful.com/room-decorating/bathroom/g1077/small-bathroom-ideas/",
     source: "House Beautiful",
     image: "/images/blog-2.jpg",
+    objectPosition: "center top",
   },
   {
     title: "The Best Bathroom Tile Ideas for Every Style",
@@ -24,6 +27,7 @@ const posts = [
     href: "https://www.elledecor.com/design-decorate/room-ideas/g39095655/bathroom-tile-ideas/",
     source: "Elle Decor",
     image: "/images/blog-3.jpg",
+    objectPosition: "center top",
   },
 ];
 
@@ -58,16 +62,15 @@ export default function BlogResourcesSection() {
               whileHover={{ y: -8, boxShadow: "0 28px 50px rgba(0,0,0,0.12)", transition: { type: "spring" as const, stiffness: 400, damping: 25 } }}
               className="group block border border-gray-100 rounded-xl overflow-hidden"
             >
-              {/* Image */}
-              <div className="h-44 overflow-hidden">
+              <div className={post.fullImage ? "overflow-hidden" : "h-44 overflow-hidden"}>
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={post.fullImage ? undefined : { objectPosition: post.objectPosition }}
+                  className={`w-full transition-transform duration-500 group-hover:scale-105 ${post.fullImage ? "h-auto" : "h-full object-cover"}`}
                 />
               </div>
 
-              {/* Text */}
               <div className="p-5">
                 <p className="text-xs text-[#E07B00] font-semibold uppercase tracking-wide mb-2">
                   {post.category}

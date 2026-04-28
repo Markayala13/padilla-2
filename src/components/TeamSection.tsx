@@ -1,19 +1,15 @@
 "use client";
 
-import { User } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const team = [
   {
-    name: "Pepe",
-    role: "Owner",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    name: "Juan",
-    role: "Owner",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    name: "José Padilla",
+    role: "Founder & Owner",
+    bio: "José Padilla, founder of Padilla Prestige Remodeling LLC. I have over 10 years of hands-on experience in the remodeling industry, with 5 years operating as a registered company in the Dallas–Fort Worth area. We specialize in high-quality bathroom remodels, tile installation, and complete shower systems built to last. We work with our own in-house team, with crew members who have 15 to 20 years of experience in bathroom remodeling. Our focus is on doing the job right the first time, with proper waterproofing, attention to detail, and a level of craftsmanship our clients can trust.",
+    image: "/images/jose-padilla.png",
   },
 ];
 
@@ -38,7 +34,7 @@ export default function TeamSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="flex justify-center max-w-xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -51,9 +47,15 @@ export default function TeamSection() {
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={visible ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.15 + 0.2 }}
-                className="w-20 h-20 rounded-full bg-[#f8f5f6] flex items-center justify-center mb-4 border-2 border-[#E07B00]/20"
+                className="w-36 h-36 rounded-full overflow-hidden mb-4 border-4 border-[#E07B00]/30 shadow-md shrink-0"
               >
-                <User size={36} className="text-[#E07B00]/40" />
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={144}
+                  height={144}
+                  className="w-full h-full object-cover object-top"
+                />
               </motion.div>
               <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
               <p className="text-[#E07B00] text-sm font-semibold uppercase tracking-wide mb-4">
