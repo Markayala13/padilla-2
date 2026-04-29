@@ -15,6 +15,8 @@ const states = [
   "Wisconsin","Wyoming",
 ];
 
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
 export default function LocationConsultationForm() {
   const { ref, visible } = useScrollAnimation();
   const [formData, setFormData] = useState({
@@ -28,6 +30,7 @@ export default function LocationConsultationForm() {
     project: "",
     smsConsent: false,
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -39,8 +42,34 @@ export default function LocationConsultationForm() {
     setFormData((prev) => ({ ...prev, [target.name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "New Free Consultation Request — Padilla Prestige Remodeling",
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          city: `${formData.city}, ${formData.state} ${formData.zip}`,
+          project: formData.project,
+          sms_consent: formData.smsConsent ? "Yes" : "No",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", city: "", state: "Texas", zip: "", project: "", smsConsent: false });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -198,11 +227,23 @@ export default function LocationConsultationForm() {
               </label>
             </div>
 
+            {status === "success" && (
+              <div className="bg-green-50 border border-green-200 text-green-700 text-sm px-4 py-3 text-center font-semibold">
+                ¡Mensaje enviado! Te contactaremos pronto.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 text-center">
+                Hubo un error. Intenta de nuevo o llámanos al (214) 810-5012.
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#E07B00] hover:bg-[#B56000] text-white font-bold py-4 text-sm uppercase tracking-wide transition-colors"
+              disabled={status === "sending"}
+              className="w-full bg-[#E07B00] hover:bg-[#B56000] disabled:opacity-60 text-white font-bold py-4 text-sm uppercase tracking-wide transition-colors"
             >
-              Book Your Free Consultation
+              {status === "sending" ? "Sending..." : "Book Your Free Consultation"}
             </button>
 
             <p className="text-xs text-gray-400 text-center">
