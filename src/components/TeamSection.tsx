@@ -9,7 +9,7 @@ const team = [
     name: "José Padilla",
     role: "Founder & Owner",
     bio: "José Padilla, founder of Padilla Prestige Remodeling LLC. I have over 10 years of hands-on experience in the remodeling industry, with 5 years operating as a registered company in the Dallas–Fort Worth area. We specialize in high-quality bathroom remodels, tile installation, and complete shower systems built to last. We work with our own in-house team, with crew members who have 15 to 20 years of experience in bathroom remodeling. Our focus is on doing the job right the first time, with proper waterproofing, attention to detail, and a level of craftsmanship our clients can trust.",
-    image: "/images/jose-padilla.png",
+    image: "/images/jose-padilla.jpg",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function TeamSection() {
                   alt={member.name}
                   width={144}
                   height={144}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[center_15%]"
                 />
               </motion.div>
               <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
