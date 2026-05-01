@@ -8,7 +8,6 @@ const projects = [
   { label: "Barrier-Free Shower", style: "Contemporary" },
   { label: "Master Shower Remodel", style: "Modern" },
   { label: "Full Bathroom Renovation", style: "Traditional" },
-  { label: "Walk-In Shower Conversion", style: "Contemporary" },
   { label: "Tub-to-Shower Conversion", style: "Transitional" },
   { label: "Accessible Bathroom", style: "ADA Compliant" },
   { label: "Bathtub Replacement", style: "Classic" },
@@ -29,13 +28,12 @@ function ProjectCard({ style, isBefore, index }: { style: string; isBefore: bool
     0: { before: "/images/before-7.jpeg", after: "/images/after-7.jpeg" },
     1: { before: "/images/before-8.jpeg", after: "/images/after-8.jpeg" },
     2: { before: "/images/before-9.jpeg", after: "/images/after-9.jpeg" },
-    3: { before: "/images/before-abril.jpeg", after: "/images/after-abril.jpeg" },
-    4: { before: "/images/before-abril-c.jpeg", after: "/images/after-abril-d.jpeg" },
-    5: { before: "/images/before-abril-g.jpeg", after: "/images/after-abril-h.jpeg" },
-    6: { before: "/images/before-abril-e.jpeg", after: "/images/after-abril-f.jpeg" },
-    7: { before: "/images/before-5.jpeg", after: "/images/after-5.jpeg" },
-    8: { before: "/images/before-6.jpeg", after: "/images/after-6.jpeg" },
-    9: { before: "/images/before-abril-k.jpeg", after: "/images/after-abril-l.jpeg" },
+    3: { before: "/images/after-abril.jpeg", after: "/images/before-abril.jpeg" },
+    4: { before: "/images/after-abril-d.jpeg", after: "/images/before-abril-c.jpeg" },
+    5: { before: "/images/before-abril-e.jpeg", after: "/images/after-abril-f.jpeg" },
+    6: { before: "/images/before-5.jpeg", after: "/images/after-5.jpeg" },
+    7: { before: "/images/before-6.jpeg", after: "/images/after-6.jpeg" },
+    8: { before: "/images/before-abril-k.jpeg", after: "/images/after-abril-l.jpeg" },
   };
   const isReal = index in realImages;
   return (

@@ -73,14 +73,20 @@ export default function SiteFooter() {
                 </svg>
               </a>
 
-              {/* Instagram — no link */}
-              <span aria-label="Instagram" className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60">
+              {/* Instagram — with link */}
+              <a
+                href="https://www.instagram.com/padilla_prestige_remodelin_llc?igsh=enFjYzF3YnVrMHB4&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/60 transition-colors"
+              >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <circle cx="12" cy="12" r="4" />
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
                 </svg>
-              </span>
+              </a>
 
               {/* YouTube — no link */}
               <span aria-label="YouTube" className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60">
